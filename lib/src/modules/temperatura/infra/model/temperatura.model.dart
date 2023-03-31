@@ -9,9 +9,9 @@ class TemperaturaModel extends TemperaturaEntity {
 
   factory TemperaturaModel.fromJson(Map<String, dynamic> json) {
     return TemperaturaModel(
-      temperatura: json['temperatura'],
-      umidade: json['umidade'],
-      data: DateTime.parse(json['data']),
+      temperatura: double.parse(json['temperatura'].toString()),
+      umidade: double.parse(json['umidade'].toString()),
+      data: DateTime.parse(json['createdAt']),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:app_weather/src/modules/temperatura/domain/entity/temperatura.en
 import 'package:app_weather/src/shared/utils/formatter.dart';
 import 'package:app_weather/src/shared/widgets/temperature_icon.widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class AverageTemperature extends StatelessWidget {
   final TemperaturaEntity temperatura;
@@ -17,7 +18,7 @@ class AverageTemperature extends StatelessWidget {
       width: 100,
       margin: const EdgeInsets.only(right: 12),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.isDarkMode ? Colors.black12 : Colors.white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(

@@ -1,6 +1,8 @@
+import 'dart:async';
+
 import 'package:app_weather/src/modules/temperatura/domain/entity/temperatura.entity.dart';
 
 abstract class ITemperaturaDatasource {
-  Future<TemperaturaEntity> getTemperatura();
+  Stream<TemperaturaEntity> streamTemperatura(StreamController<TemperaturaEntity> controller);
   Future<List<TemperaturaEntity>> getTemperaturas();
 }

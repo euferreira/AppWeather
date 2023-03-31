@@ -20,13 +20,12 @@ class HomePage extends GetView<HomeController> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Obx(
-                      () => Temperatura(
+                    Obx(() {
+                      return Temperatura(
                         maxWidth: constraint.maxWidth,
-                        temperature:
-                            controller.temperatura.value?.temperatura ?? 0,
-                      ),
-                    ),
+                        temperature: controller.temperatura.value!.temperatura,
+                      );
+                    }),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -40,8 +39,7 @@ class HomePage extends GetView<HomeController> {
                             Obx(
                               () => Text(
                                 formatDataToString(
-                                  controller.temperatura.value?.data ??
-                                      DateTime.now(),
+                                  controller.temperatura.value?.data ?? DateTime.now(),
                                 ),
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
@@ -71,8 +69,14 @@ class HomePage extends GetView<HomeController> {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     const SizedBox(height: 12),
-                    Obx(
-                      () => SizedBox(
+                    Obx(() {
+                      if (controller.isLoading.isTrue) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+
+                      return SizedBox(
                         height: constraint.maxWidth * 0.3,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
@@ -83,8 +87,8 @@ class HomePage extends GetView<HomeController> {
                             );
                           },
                         ),
-                      ),
-                    ),
+                      );
+                    }),
                   ],
                 ),
               );

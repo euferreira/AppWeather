@@ -8,4 +8,12 @@ class TemperaturaEntity {
     required this.umidade,
     required this.data,
   });
+
+  factory TemperaturaEntity.fromEmpty() {
+    return TemperaturaEntity(
+      temperatura: 0,
+      umidade: 0,
+      data: DateTime.now(),
+    );
+  }
 }

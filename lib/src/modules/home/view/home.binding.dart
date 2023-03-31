@@ -8,7 +8,9 @@ class HomeBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<HomeController>(() {
-      final datasource = TemperaturaDatasource();
+      final datasource = TemperaturaDatasource(
+        apiClientDio: Get.find(),
+      );
       final repository = TemperaturaRepository(datasource);
 
       return HomeController(
